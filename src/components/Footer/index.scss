@@ -1,0 +1,77 @@
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 50px;
+  &__top-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__top {
+    width: 100%;
+    padding: 50px;
+    background-color: #003580;
+    color: white;
+  }
+  &__title {
+    display: block;
+    text-align: center;
+    font-size: 37px;
+    margin: 0;
+    font-weight: bold;
+  }
+  &__desc {
+    font-size: 18px;
+    font-weight: 300;
+  }
+  &__form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__input {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  &__submit-btn {
+    background-color: #0071c2;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    height: 44px;
+    font-size: 14px;
+  }
+  &__list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 50px;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  &__link {
+    font-size: 14px;
+    font-family: 300;
+    color: black;
+    text-decoration: none;
+    &:hover {
+      color: black;
+    }
+  }
+  &__avtor {
+    font-size: 14px;
+  }
+}
