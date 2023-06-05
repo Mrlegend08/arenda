@@ -126,11 +126,17 @@
     cursor: pointer;
     flex: 1 1;
     overflow: hidden;
+    width: 189px !important;
+    color: black;
+    text-decoration: none;
+    &:hover {
+      color: black;
+    }
   }
   &__middle-img {
     height: 150px;
     object-fit: cover;
-    width: 100%;
+    width: 189px;
   }
   &__middle-title {
     color: #444;

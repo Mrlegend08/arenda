@@ -6,14 +6,68 @@ import BoyOutlinedIcon from '@mui/icons-material/BoyOutlined';
 import { HotelContext } from '../../context/SearchResult';
 import { Link, NavLink } from 'react-router-dom';
 const { RangePicker } = DatePicker;
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { SwiperContext } from '../../context/SearchResultTwo';
 const HomeSearch = () => {
     const [adult, setAdult] = React.useState(1)
     const [children, setChildren] = React.useState(0)
     const [room, setRoom] = React.useState(1)
     const [open, setOpen] = React.useState(false)
     const { hotel, setHotel } = React.useContext(HotelContext)
+    const { swiperHotel, setSwiperHotel } = React.useContext(SwiperContext)
     const inputRef = React.useRef("")
     const dataRef = React.useRef("")
+    const karuselData = [
+        {
+            nomi: "Andijon",
+            imgUrl: "https://www.agro.uz/wp-content/uploads/2021/09/andijon-e1633416272681.jpg"
+        },
+        {
+            nomi: "Farg'ona",
+            imgUrl: "https://fargona.uz/uploads/media/_XPI7242.JPG"
+        },
+        {
+            nomi: "Namangan",
+            imgUrl: "https://storage.kun.uz/source/3/RMmkcZUILvJxIK0vFbAA4G8ozOLfxYSM.jpg"
+        },
+        {
+            nomi: "Toshkent",
+            imgUrl: "https://xs.uz/upload/template/89935aac7be4f65eecd3aac2c94ac4750907.jpg"
+        },
+        {
+            nomi: "Surxandaryo",
+            imgUrl: "https://yuz.uz/imageproxy/1200x/https://yuz.uz/file/news/f4a2e7052058ed0c4ae9a72596c867ce.jpg"
+        },
+        {
+            nomi: "Sirdaryo",
+            imgUrl: "https://yuz.uz/imageproxy/1200x/https://yuz.uz/file/news/3b56c7eaba3a07b4b286a5d75ea791ad.png"
+        },
+        {
+            nomi: "Samarqand",
+            imgUrl: "https://www.sayyoh.com/wp-content/uploads/2021/04/Registon.jpg"
+        },
+        {
+            nomi: "Qashqadaryo",
+            imgUrl: "https://qviib.uz/uploads/news/ded868240deb62e85fac8aa8d68bb3d4.jpg"
+        },
+        {
+            nomi: "Buxoro",
+            imgUrl: "https://uzreport.news/fotobank/image/93103214520bfc4c70f13c065020ec2a.jpeg"
+        },
+        {
+            nomi: "Navoiy",
+            imgUrl: "https://www.gazeta.uz/media/img/2013/02/bSo3v113599997573623_b.jpg"
+        },
+        {
+            nomi: "Xorazm",
+            imgUrl: "https://upload.wikimedia.org/wikipedia/commons/d/dc/View_from_the_city_walls%2C_Khiva_%284934484894%29.jpg"
+        },
+        {
+            nomi: "Jizzax",
+            imgUrl: "https://upload.wikimedia.org/wikipedia/uz/1/12/O%27zMU_Jizzax_filiali_asosiy_binosi%2C_Jizzax_shahri%2C_Sh.Rashidov_ko%27chasi_269-uy._copy.jpg"
+        }
+    ]
     const handleClick = () => {
         const hotelObject = {
             viloyat: inputRef.current.value,
@@ -27,6 +81,19 @@ const HomeSearch = () => {
         console.log(hotelObject)
         setHotel(hotelObject)
     }
+    const cardGene = karuselData.map((item, index) => {
+        return (
+            <SwiperSlide onClick={() => setSwiperHotel(item.nomi)} key={index} className='home-search__middle-item'>
+                <Link  to={"searchresulttwo"} className='home-search__middle-item'>
+                    <img className='home-search__middle-img' src={item.imgUrl} alt="" />
+                    <div className="home-search__middle-flex">
+                        <h2 className='home-search__middle-title'>{item.nomi}</h2>
+                        <h3 className='home-search__middle-text'>233 hotels</h3>
+                    </div>
+                </Link>
+            </SwiperSlide>
+        );
+    })
     return (
         <>
             <div className="home-search">
@@ -110,43 +177,15 @@ const HomeSearch = () => {
                         <h3 className='home-search__title'>
                             Qaysi viloyatdan kerak?
                         </h3>
-                        <ul className='home-search__middle-list'>
-                            <li className='home-search__middle-item'>
-                                <img className='home-search__middle-img' src="https://cf.bstatic.com/xdata/images/xphoto/square300/57584488.webp?k=bf724e4e9b9b75480bbe7fc675460a089ba6414fe4693b83ea3fdd8e938832a6&o=" alt="" />
-                                <div className="home-search__middle-flex">
-                                    <h2 className='home-search__middle-title'>Fargona</h2>
-                                    <h3 className='home-search__middle-text'>233 hotels</h3>
-                                </div>
-                            </li>
-                            <li className='home-search__middle-item'>
-                                <img className='home-search__middle-img' src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-apartments_300/9f60235dc09a3ac3f0a93adbc901c61ecd1ce72e.jpg" alt="" />
-                                <div className="home-search__middle-flex">
-                                    <h2 className='home-search__middle-title'>Toshkent</h2>
-                                    <h3 className='home-search__middle-text'>2331 hotels</h3>
-                                </div>
-                            </li>
-                            <li className='home-search__middle-item'>
-                                <img className='home-search__middle-img' src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/bg_resorts/6f87c6143fbd51a0bb5d15ca3b9cf84211ab0884.jpg" alt="" />
-                                <div className="home-search__middle-flex">
-                                    <h2 className='home-search__middle-title'>Xorazm</h2>
-                                    <h3 className='home-search__middle-text'>2331 hotels</h3>
-                                </div>
-                            </li>
-                            <li className='home-search__middle-item'>
-                                <img className='home-search__middle-img' src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-villas_300/dd0d7f8202676306a661aa4f0cf1ffab31286211.jpg" alt="" />
-                                <div className="home-search__middle-flex">
-                                    <h2 className='home-search__middle-title'>Surxandaryo</h2>
-                                    <h3 className='home-search__middle-text'>2331 hotels</h3>
-                                </div>
-                            </li>
-                            <li className='home-search__middle-item'>
-                                <img className='home-search__middle-img' src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-chalet_300/8ee014fcc493cb3334e25893a1dee8c6d36ed0ba.jpg" alt="" />
-                                <div className="home-search__middle-flex">
-                                    <h2 className='home-search__middle-title'>Andijon</h2>
-                                    <h3 className='home-search__middle-text'>2331 hotels</h3>
-                                </div>
-                            </li>
-                        </ul>
+                        <Swiper
+                            spaceBetween={20}
+                            slidesPerView={5}
+                            onSwiper={(swiper) => console.log(swiper)}
+                            onSlideChange={() => console.log("slide change")}
+                            className="                     "
+                        >
+                            {cardGene}
+                        </Swiper>
                         <h3 className='home-search__title'>
                             Eng kop korilgan joylar
                         </h3>
@@ -194,6 +233,7 @@ const HomeSearch = () => {
                         </ul>
                     </div>
                 </div>
+
             </div>
         </>
     )

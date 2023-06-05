@@ -4,11 +4,13 @@ import './index.css'
 import Root from './Root'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from './context/SearchResult'
-
+import { Provider as SwiperProvider } from './context/SearchResultTwo'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider>
-      <Root />
+      <SwiperProvider>
+        <Root />
+      </SwiperProvider>
     </Provider>
   </BrowserRouter>,
 )
